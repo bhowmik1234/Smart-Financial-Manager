@@ -17,12 +17,12 @@ jobs:
           
       - name: Create .env file
         run: |
-          echo "FIREBASE_API_KEY=mock-api-key-12345" > .env
-          echo "FIREBASE_APP_ID=mock-app-id-98765" >> .env
-          echo "FIREBASE_MESSAGING_SENDER_ID=1001141776954" >> .env
-          echo "FIREBASE_PROJECT_ID=cred-money-1d9a7" >> .env
-          echo "FIREBASE_AUTH_DOMAIN=cred-money-1d9a7.firebaseapp.com" >> .env
-          echo "FIREBASE_STORAGE_BUCKET=cred-money-1d9a7.firebasestorage.app" >> .env
+          echo "FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}" > .env
+          echo "FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID }}" >> .env
+          echo "FIREBASE_MESSAGING_SENDER_ID=${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}" >> .env
+          echo "FIREBASE_PROJECT_ID=${{ secrets.FIREBASE_PROJECT_ID }}" >> .env
+          echo "FIREBASE_AUTH_DOMAIN=${{ secrets.FIREBASE_AUTH_DOMAIN }}" >> .env
+          echo "FIREBASE_STORAGE_BUCKET=${{ secrets.FIREBASE_STORAGE_BUCKET }}" >> .env
 
       - name: Install dependencies
         run: flutter pub get
