@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,7 +17,24 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize Firebase
-  // await Firebase.initializeApp(); // Uncomment when google-services.json is added
+  try {
+    if (kIsWeb) {
+      await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: 'AIzaSyBdo-nXmSOdX2kqUAXL1U8DG3Cq3gbghkA',
+          appId: '1:1001141776954:web:9782a3b1dccad96ea57b03',
+          messagingSenderId: '1001141776954',
+          projectId: 'cred-money-1d9a7',
+          authDomain: 'cred-money-1d9a7.firebaseapp.com',
+          storageBucket: 'cred-money-1d9a7.firebasestorage.app',
+        ),
+      );
+    } else {
+      await Firebase.initializeApp();
+    }
+  } catch (e) {
+    debugPrint('Firebase initialization failed: $e');
+  }
 
   // Initialize Hive
   await Hive.initFlutter();
