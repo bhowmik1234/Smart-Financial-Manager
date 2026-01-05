@@ -53,7 +53,7 @@ final rewardsHistoryProvider = AutoDisposeNotifierProvider<RewardsHistory,
 );
 
 typedef _$RewardsHistory = AutoDisposeNotifier<List<RewardTransaction>>;
-String _$rewardsControllerHash() => r'f9639088de101e13226ff01f4216d9443499c7c9';
+String _$rewardsControllerHash() => r'0e3c13ea3b91f62624b4339a497d6a0a6ba21d04';
 
 /// See also [RewardsController].
 @ProviderFor(RewardsController)

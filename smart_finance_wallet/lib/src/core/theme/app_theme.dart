@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static const FlexScheme _scheme = FlexScheme.emerald;
+  static const FlexScheme _scheme = FlexScheme.material;
 
   static ThemeData get light {
     return FlexThemeData.light(

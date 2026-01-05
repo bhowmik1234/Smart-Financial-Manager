@@ -2,9 +2,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../data/wallet_repository.dart';
 import '../domain/transaction_model.dart';
-import '../../../../core/services/notification_service.dart';
-import '../../rewards/presentation/rewards_providers.dart';
-import '../../../../core/providers/common_providers.dart';
+import 'package:smart_finance_wallet/src/core/services/notification_service.dart';
+import 'package:smart_finance_wallet/src/features/rewards/presentation/rewards_providers.dart';
+import 'package:smart_finance_wallet/src/core/providers/common_providers.dart';
 import '../../notifications/presentation/notification_controller.dart';
 
 part 'wallet_providers.g.dart';

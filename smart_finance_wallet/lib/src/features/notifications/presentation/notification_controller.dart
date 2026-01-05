@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../notifications/data/preferences_repository.dart';
 import '../../notifications/domain/notification_preferences.dart';
-import '../../../../core/providers/common_providers.dart';
+import 'package:smart_finance_wallet/src/core/providers/common_providers.dart';
 
 part 'notification_controller.g.dart';
 

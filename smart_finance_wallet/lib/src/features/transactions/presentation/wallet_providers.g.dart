@@ -35,7 +35,7 @@ final balanceProvider = AutoDisposeNotifierProvider<Balance, double>.internal(
 );
 
 typedef _$Balance = AutoDisposeNotifier<double>;
-String _$transactionListHash() => r'3dfb0010a39b2abb971022b2e5f9df61df6740c5';
+String _$transactionListHash() => r'643056b82f2649ea625e0551840514a3ec406df6';
 
 /// See also [TransactionList].
 @ProviderFor(TransactionList)

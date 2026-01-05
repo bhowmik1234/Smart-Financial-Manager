@@ -111,22 +111,17 @@ class _WalletDashboardScreenState extends ConsumerState<WalletDashboardScreen> {
             Expanded(
               child: transactions.isEmpty
                   ? const Center(child: Text('No transactions yet'))
-import 'package:flutter_animate/flutter_animate.dart';
-import 'widgets/transaction_card.dart';
-
-// ... (existing imports)
-
-                    : ListView.builder(
-                        padding: const EdgeInsets.only(bottom: 80),
-                        itemCount: transactions.length,
-                        itemBuilder: (context, index) {
-                          final tx = transactions[index];
-                          return TransactionCard(transaction: tx)
-                              .animate()
-                              .fadeIn(delay: (50 * index).ms)
-                              .slideX(begin: 0.1, end: 0);
-                        },
-                      ),
+                  : ListView.builder(
+                      padding: const EdgeInsets.only(bottom: 80),
+                      itemCount: transactions.length,
+                      itemBuilder: (context, index) {
+                        final tx = transactions[index];
+                        return TransactionCard(transaction: tx)
+                            .animate()
+                            .fadeIn(delay: (50 * index).ms)
+                            .slideX(begin: 0.1, end: 0);
+                      },
+                    ),
             ),
           ],
         ),

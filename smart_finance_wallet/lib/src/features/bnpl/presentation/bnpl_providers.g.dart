@@ -21,7 +21,7 @@ final bnplRepositoryProvider = AutoDisposeProvider<BnplRepository>.internal(
 );
 
 typedef BnplRepositoryRef = AutoDisposeProviderRef<BnplRepository>;
-String _$bnplTransactionsHash() => r'0787b27fec770c15a4af435cac56556488c2be4c';
+String _$bnplTransactionsHash() => r'70dd8d62a743d8681011b20c9c3281428066d162';
 
 /// See also [BnplTransactions].
 @ProviderFor(BnplTransactions)

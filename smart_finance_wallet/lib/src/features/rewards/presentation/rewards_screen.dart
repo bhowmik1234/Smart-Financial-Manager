@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'rewards_providers.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class RewardsMarketplaceScreen extends ConsumerStatefulWidget {
   const RewardsMarketplaceScreen({super.key});
@@ -32,10 +33,6 @@ class _RewardsMarketplaceScreenState
       ),
       body: CustomScrollView(
         slivers: [
-import 'package:flutter_animate/flutter_animate.dart';
-
-// ... (existing imports)
-
           // Header
           SliverToBoxAdapter(
             child: Container(
@@ -56,7 +53,9 @@ import 'package:flutter_animate/flutter_animate.dart';
                           color: Colors.amber[800],
                           fontWeight: FontWeight.bold,
                         ),
-                  ).animate().scale(duration: 400.ms, curve: Curves.easeOutBack),
+                  )
+                      .animate()
+                      .scale(duration: 400.ms, curve: Curves.easeOutBack),
                   Text(
                     'Smart Coins',
                     style: Theme.of(context).textTheme.titleMedium,
@@ -65,7 +64,7 @@ import 'package:flutter_animate/flutter_animate.dart';
               ),
             ),
           ),
-          
+
           // Marketplace Grid
           SliverPadding(
             padding: const EdgeInsets.all(16),
@@ -170,7 +169,7 @@ class _RewardItem extends ConsumerWidget {
         onTap: () async {
           // ... (existing logic)
           // Simplified for brevity in replace
-           final success = await ref
+          final success = await ref
               .read(rewardsControllerProvider.notifier)
               .redeemCoins(amount: cost, item: title);
 
