@@ -1,0 +1,40 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          
+      - name: Create .env file
+        run: |
+          echo "FIREBASE_API_KEY=mock-api-key-12345" > .env
+          echo "FIREBASE_APP_ID=mock-app-id-98765" >> .env
+          echo "FIREBASE_MESSAGING_SENDER_ID=1001141776954" >> .env
+          echo "FIREBASE_PROJECT_ID=cred-money-1d9a7" >> .env
+          echo "FIREBASE_AUTH_DOMAIN=cred-money-1d9a7.firebaseapp.com" >> .env
+          echo "FIREBASE_STORAGE_BUCKET=cred-money-1d9a7.firebasestorage.app" >> .env
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Generate Code
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Build Web
+        run: flutter build web --release --base-href "/Smart-Financial-Manager/"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
