@@ -20,7 +20,7 @@ void main() {
             date: DateTime.now(),
             description: 'Gas',
             type: TransactionType.send,
-            category: TransactionCategory.transport),
+            category: TransactionCategory.travel),
       ];
 
       double total = 0;

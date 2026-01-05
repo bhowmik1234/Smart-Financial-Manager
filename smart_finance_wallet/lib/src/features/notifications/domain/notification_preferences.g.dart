@@ -9,7 +9,7 @@ part of 'notification_preferences.dart';
 class NotificationPreferencesAdapter
     extends TypeAdapter<NotificationPreferences> {
   @override
-  final int typeId = 4;
+  final int typeId = 5;
 
   @override
   NotificationPreferences read(BinaryReader reader) {

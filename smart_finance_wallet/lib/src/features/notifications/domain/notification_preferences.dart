@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'notification_preferences.g.dart';
 
-@HiveType(typeId: 4) // Assigning a new unique TypeId
+@HiveType(typeId: 5) // Assigning a new unique TypeId
 class NotificationPreferences {
   @HiveField(0)
   final bool bnplDueDates;
