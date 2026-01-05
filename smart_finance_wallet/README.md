@@ -1,156 +1,103 @@
 # Smart Finance Wallet
 
-A Flutter-based financial management application featuring Wallet tracking, BNPL (Buy Now Pay Later) simulation, Rewards system, and Dashboard analytics. This app uses Riverpod for state management and Hive for local storage.
+A premium, high-performance Flutter fintech application featuring a "Dark Mode" aesthetic, advanced glassmorphism UI, and simulated financial intelligence.
+
+## Features
+
+### Core Experience
+*   **Premium Dark UI**: Deep black backgrounds with vibrant neon accents and glassmorphism.
+*   **Dashboard**: Real-time Net Worth tracking, Credit Utilization gauge, and Expense Analysis.
+*   **Wallet**: Send money, Add balance, and view transaction history with rich animations.
+*   **BNPL (Buy Now Pay Later)**: Manage credit flow, mock bill payments, and track upcoming dues.
+*   **Rewards**: Gamified "Smart Coins" system with a redeemable marketplace.
+
+### Advanced Financial Intelligence (New)
+*   **Financial Digital Twin**: "What-if" simulation engine to forecast your balance for the next 30/90 days.
+*   **Credit Health Engine**: Dynamic credit scoring (0-100) that updates based on your payment behavior.
+*   **Spending DNA**: Automatic persona analysis (e.g., "Impulse Optimizer", "Stability Seeker") based on transaction patterns.
+*   **Explainable AI**: Smart recommendations to help you optimize cash flow and reduce risk.
+
+---
 
 ## Prerequisites
 
-Before drawing, ensure you have the following installed:
+*   **Flutter SDK**: Version 3.10.0 or higher.
+*   **Dart SDK**: Version 3.0.0 or higher.
+*   **Platform**: Chrome (for Web) or iOS/Android Simulator.
 
-*   **Flutter SDK**: [Install Flutter](https://docs.flutter.dev/get-started/install) (Ensure you are on the `stable` channel).
-*   **Browser**: Google Chrome (for web debugging).
-*   **VS Code** or **Android Studio**: With Flutter and Dart extensions installed.
+---
 
 ## Setup & Installation
 
-1.  **Clone the repository** (or unzip the project folder).
-2.  **Open the terminal** in the project directory.
-3.  **Install dependencies**:
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-username/smart_finance_wallet.git
+    cd smart_finance_wallet
+    ```
+
+2.  **Install dependencies**:
     ```bash
     flutter pub get
     ```
-4.  **Generate code** (for Riverpod & Hive adapters):
+
+3.  **Generate code (Hive Adapters)**:
+    Required for local database storage models.
     ```bash
-    dart run build_runner build --delete-conflicting-outputs
+    flutter pub run build_runner build --delete-conflicting-outputs
     ```
 
-## Running the Web Application
+---
 
-To start the application on Chrome:
+## Running the App
 
+### Web (Recommended for Development)
 ```bash
 flutter run -d chrome
 ```
 
-*Note: The first launch might take a minute to download the Flutter Web SDK.*
-
-## Configuration
-
-### Firebase Configuration (Crucial Step)
-
-Currently, the app is configured with **placeholder/dummy credentials** for the web platform to allow the UI to launch without crashing. To connect it to your actual Firebase backend:
-
-1.  **Go to Firebase Console**:
-    *   Create a new project or select an existing one.
-    *   Navigate to **Project settings** > **General**.
-    *   Under **Your apps**, click the **Web (</>)** icon to create a web app.
-    *   Copy the `firebaseConfig` object (apiKey, authDomain, projectId, etc.).
-
-2.  **Update `lib/main.dart`**:
-    *   Open the file `lib/main.dart` in your editor.
-    *   Locate the `Firebase.initializeApp` call inside the `main()` function (around lines 18-30).
-    *   Replace the dummy strings in the `FirebaseOptions` constructor with your actual keys from the Firebase Console.
-
-    ```dart
-    // lib/main.dart
-
-    if (kIsWeb) {
-      await Firebase.initializeApp(
-        options: const FirebaseOptions(
-          apiKey: 'PASTE_YOUR_API_KEY_HERE', 
-          appId: 'PASTE_YOUR_APP_ID_HERE', 
-          messagingSenderId: 'PASTE_YOUR_SENDER_ID_HERE',
-          projectId: 'PASTE_YOUR_PROJECT_ID_HERE',
-          // authDomain: '...', // Optional, add if needed
-          // storageBucket: '...', // Optional, add if needed
-        ),
-      );
-    }
-    ```
-
-3.  **Restart the App**:
-    *   Perform a "Hot Restart" (`r` in the terminal) or stop and re-run `flutter run -d chrome`.
-
-### Better Way (Recommended for Production)
-
-For a more robust setup, use the FlutterFire CLI:
-
-1.  Install the CLI: `npm install -g firebase-tools` and `dart pub global activate flutterfire_cli`.
-2.  Run: `flutterfire configure`.
-3.  This will automatically generate `lib/firebase_options.dart` with the correct keys for all platforms.
-4.  Update `lib/main.dart` to use the generated options:
-    ```dart
-    import 'firebase_options.dart';
-    // ...
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    ```
-
-## Features & Usage Guide
-
-### 1. Authentication
-*   **Sign Up**: Create a new account using email and password.
-*   **Login**: Access your dashboard with existing credentials.
-*   **Logout**: Securely sign out from the profile/settings area.
-*   **Manual Test**:
-    1.  Launch the app.
-    2.  Click "Sign Up". Enter a valid email (e.g., `test@example.com`) and password (min 6 chars).
-    3.  Verify successful navigation to the Dashboard.
-    4.  Logout and try logging in with the same credentials.
-
-### 2. Dashboard
-*   **Overview**: View your total balance, recent transactions, and financial health score.
-*   **Charts**: Visual representation of your spending habits (Weekly/Monthly).
-*   **Manual Test**:
-    1.  Observe the "Total Balance" card.
-    2.  Check if the chart renders correctly.
-    3.  Verify that recent transactions added in the Wallet section appear here.
-
-### 3. Wallet (Transactions)
-*   **Add Money**: Top up your wallet balance.
-*   **Send Money**: Simulate transferring funds to another user.
-*   **Transaction History**: List of all credits and debits with categories.
-*   **Manual Test**:
-    1.  Go to the **Wallet** tab.
-    2.  Click **"Add Money"**. Enter $1000 and select category "Salary". Confirm.
-    3.  Verify balance increases by $1000.
-    4.  Click **"Send Money"**. Enter $50 and a recipient name. Confirm.
-    5.  Verify balance decreases by $50 and a new "Send" transaction appears in the list.
-
-### 4. BNPL (Buy Now Pay Later)
-*   **Simulate Purchase**: Create a new BNPL obligation (split payment).
-*   **View Bills**: See upcoming and settled bills.
-*   **Pay Bill**: Settle an outstanding BNPL bill using your wallet balance.
-*   **Manual Test**:
-    1.  Go to the **BNPL** section (via Dashboard or Navigation).
-    2.  Create a new BNPL purchase of $200.
-    3.  Go to **"Upcoming"** bills. You should see the $200 bill.
-    4.  Click **"Pay Now"**.
-    5.  Verify the bill moves to **"Settled"** tab.
-    6.  Check Wallet balance; it should be deducted by $200.
-    7.  **Bonus**: You should earn rewards coins for paying this bill!
-
-### 5. Rewards Engine
-*   **Earn Coins**: Gain coins for adding money, sending money, or paying BNPL bills.
-*   **Redeem Rewards**: Use coins to claim simulated cashback or vouchers.
-*   **Manual Test**:
-    1.  Go to the **Rewards** screen.
-    2.  Note your current "Coin Balance".
-    3.  Perform a transaction in the Wallet or pay a BNPL bill.
-    4.  Return to Rewards; verify the coin balance has increased.
-    5.  Select a reward (e.g., "$5 Cashback") and click **"Redeem"**.
-    6.  Verify coins are deducted and a success message is shown.
-
-## Running Tests
-
-To run the automated unit and widget tests:
-
+### Mobile
 ```bash
-flutter test
+# For iOS Simulator
+open -a Simulator
+flutter run -d iphone
+
+# For Android Emulator
+flutter run -d android
 ```
 
-This will execute checks for:
-*   Wallet logic (Balance updates).
-*   BNPL constraints (Credit limits).
-*   Rewards calculations.
-*   Authentication state flows.
+**Note**: If you encounter a blank screen on Web launch, ensure you perform a **Hot Restart** (`R` in the terminal) inside the running flutter process.
+
+---
+
+## How to Use
+
+### 1. Authentication
+*   **Login**: Use any email/password (e.g., `user@example.com` / `password`). This is a mock authentication flow.
+*   **Sign Up**: Create a new account to start with a fresh wallet simulation.
+
+### 2. Dashboard
+*   View your **Total Balance** and **Reward Points** at the top.
+*   Check your **Credit Utilization** and **Expense Split** in the bottom grid.
+*   Use **Quick Actions** to navigate to specific features.
+
+### 3. Wallet Operations
+*   Tap **"Wallet"** to verify history.
+*   Tap **"Add Money"** to top up your simulated balance.
+*   Tap **"Send Money"** to create simulated expense transactions.
+
+### 4. Financial Intelligence (The "Analysis" Tab)
+*   Tap the **Teal "Analysis"** button on the Dashboard.
+*   **Credit Gauge**: See your real-time risk tier. Pay off BNPL bills to improve this.
+*   **Spending DNA**: See your current financial persona badge.
+*   **Digital Twin**: Scroll down to the **Simulation** card.
+    *   Adjust **Income/Expense sliders** to see how your 30-day projected balance changes.
+    *   Toggle **"Simulate Delayed Payment"** to see the negative impact on your forecast.
+*   **Recommendations**: Click any AI Recommendation card to expand and read the impact analysis.
+
+---
+
+## Project Structure
+
+*   `lib/src/features`: Modular feature code (Auth, Wallet, BNPL, Intelligence).
+*   `lib/src/core`: Shared widgets (GlassCard) and theming.
+*   `test/`: Unit and Widget tests.

@@ -14,6 +14,8 @@ import 'features/dashboard/presentation/dashboard_screen.dart';
 import 'features/notifications/presentation/notification_settings_screen.dart';
 import 'core/theme/app_theme.dart';
 
+import 'features/financial_intelligence/presentation/financial_insights_screen.dart';
+
 class SmartFinanceApp extends ConsumerWidget {
   const SmartFinanceApp({super.key});
 
@@ -59,9 +61,6 @@ class SmartFinanceApp extends ConsumerWidget {
             path: '/forgot-password',
             builder: (context, state) => const ForgotPasswordScreen(),
           ),
-          // Cleaned up duplicate/top-level routes that are now nested under /wallet if preferred,
-          // but keeping top-level as per existing pattern if they are used elsewhere.
-          // However, simpler to keep structure clean.
           GoRoute(
             path: '/bnpl',
             builder: (context, state) => const BnplDashboardScreen(),
@@ -69,6 +68,10 @@ class SmartFinanceApp extends ConsumerWidget {
           GoRoute(
             path: '/rewards',
             builder: (context, state) => const RewardsMarketplaceScreen(),
+          ),
+          GoRoute(
+            path: '/financial-insights',
+            builder: (context, state) => const FinancialInsightsScreen(),
           ),
           GoRoute(
             path: '/notification-settings',

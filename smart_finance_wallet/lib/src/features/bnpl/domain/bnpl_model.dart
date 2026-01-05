@@ -22,6 +22,9 @@ class BnplTransaction extends HiveObject {
   @HiveField(5)
   final DateTime createdAt;
 
+  @HiveField(6)
+  DateTime? paidDate;
+
   BnplTransaction({
     required this.id,
     required this.title,
@@ -29,5 +32,6 @@ class BnplTransaction extends HiveObject {
     required this.dueDate,
     this.isPaid = false,
     required this.createdAt,
+    this.paidDate,
   });
 }

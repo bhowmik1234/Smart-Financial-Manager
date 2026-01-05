@@ -329,31 +329,32 @@ class _QuickActions extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           _ActionButton(
-            icon: Icons.account_balance_wallet_rounded,
+            icon: Icons.account_balance_wallet,
             label: 'Wallet',
             color: const Color(0xFF2979FF),
             onTap: () => context.push('/wallet'),
           ),
           const SizedBox(width: 16),
           _ActionButton(
-            icon: Icons.credit_score_rounded,
+            icon: Icons.history_edu,
             label: 'BNPL',
             color: const Color(0xFF651FFF),
             onTap: () => context.push('/bnpl'),
           ),
           const SizedBox(width: 16),
           _ActionButton(
-            icon: Icons.diamond_rounded,
+            icon: Icons.stars,
             label: 'Rewards',
-            color: const Color(0xFFFF4081),
+            color: Colors.amber,
             onTap: () => context.push('/rewards'),
           ),
           const SizedBox(width: 16),
           _ActionButton(
-            icon: Icons.pie_chart_rounded,
+            icon: Icons.psychology_rounded,
             label: 'Analysis',
             color: Colors.tealAccent,
-            onTap: () {}, // Future feature
+            isPremium: true,
+            onTap: () => context.push('/financial-insights'),
           ),
         ],
       ),
@@ -366,12 +367,14 @@ class _ActionButton extends StatelessWidget {
   final String label;
   final Color color;
   final VoidCallback onTap;
+  final bool isPremium;
 
   const _ActionButton({
     required this.icon,
     required this.label,
     required this.color,
     required this.onTap,
+    this.isPremium = false,
   });
 
   @override
@@ -381,24 +384,21 @@ class _ActionButton extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: 60,
-            height: 60,
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: const Color(0xFF1E1E1E), // Dark button bg
+              color: color.withOpacity(0.1),
               borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-                BoxShadow(
-                  color: color.withOpacity(0.1),
-                  blurRadius: 20, // Glow effect
-                  spreadRadius: -5,
-                ),
-              ],
-              border: Border.all(color: Colors.white.withOpacity(0.05)),
+              border: isPremium
+                  ? Border.all(color: color.withOpacity(0.6), width: 1.5)
+                  : Border.all(color: color.withOpacity(0.3)),
+              boxShadow: isPremium
+                  ? [
+                      BoxShadow(
+                          color: color.withOpacity(0.2),
+                          blurRadius: 10,
+                          spreadRadius: 1)
+                    ]
+                  : [],
             ),
             child: Icon(icon, color: color, size: 28),
           ),

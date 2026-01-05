@@ -15,9 +15,7 @@
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
+# Visual Studio Code related
 .vscode/
 
 # Flutter/Dart/Pub related
@@ -44,3 +42,11 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Coverage
+coverage/
+test/coverage/
+
+# Secrets
+.env
+env/

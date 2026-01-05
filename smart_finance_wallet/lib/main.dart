@@ -13,20 +13,25 @@ import 'src/features/rewards/domain/reward_model.dart';
 import 'src/features/notifications/domain/notification_preferences.dart';
 import 'src/features/rewards/data/rewards_repository.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load Env
+  await dotenv.load(fileName: ".env");
 
   // Initialize Firebase
   try {
     if (kIsWeb) {
       await Firebase.initializeApp(
-        options: const FirebaseOptions(
-          apiKey: 'AIzaSyBdo-nXmSOdX2kqUAXL1U8DG3Cq3gbghkA',
-          appId: '1:1001141776954:web:9782a3b1dccad96ea57b03',
-          messagingSenderId: '1001141776954',
-          projectId: 'cred-money-1d9a7',
-          authDomain: 'cred-money-1d9a7.firebaseapp.com',
-          storageBucket: 'cred-money-1d9a7.firebasestorage.app',
+        options: FirebaseOptions(
+          apiKey: dotenv.env['FIREBASE_API_KEY'] ?? '',
+          appId: dotenv.env['FIREBASE_APP_ID'] ?? '',
+          messagingSenderId: dotenv.env['FIREBASE_MESSAGING_SENDER_ID'] ?? '',
+          projectId: dotenv.env['FIREBASE_PROJECT_ID'] ?? '',
+          authDomain: dotenv.env['FIREBASE_AUTH_DOMAIN'] ?? '',
+          storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET'] ?? '',
         ),
       );
     } else {
